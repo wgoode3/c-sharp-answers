@@ -6,6 +6,8 @@ namespace human
     {
         static void Main(string[] args)
         {
+            string InputLine = Console.ReadLine();
+            Console.WriteLine(InputLine);
             Human kazuma = new Human("Kazuma");
             Ninja chris = new Ninja("Chris");
             Samurai darkness = new Samurai("Darkness");
