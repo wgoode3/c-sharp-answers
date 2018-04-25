@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Survey</title>
+</head>
+<body>
+    <h1>Survey</h1>
+    <fieldset>
+        <legend>Survey</legend>
+        <form action="/process" method="post">
+            <p>Your Name: <input type="text" name="name"></p>
+            <p>
+                Favorite Language: 
+                <select name="language">
+                    <option>JavaScript</option>
+                    <option>Python</option>
+                    <option>Ruby</option>
+                    <option>Java</option>
+                    <option>C++</option>
+                    <option>C#</option>
+                </select>
+            </p>
+            <p>
+                Your Location: 
+                <select name="location">
+                    <option>Seattle</option>
+                    <option>San Jose</option>
+                    <option>Chicago</option>
+                    <option>Dallas</option>
+                    <option>Tulsa</option>
+                    <option>Burbank</option>
+                    <option>DC</option>
+                </select>
+            </p>
+            <p>Your Comment:<br><textarea name="comment"></textarea></p>
+            <button type="submit">Submit Survey</button>
+        </form>
+    </fieldset>
+</body>
+</html>
