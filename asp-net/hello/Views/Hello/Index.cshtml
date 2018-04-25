@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Hello!</title>
+        <link rel="stylesheet" href="~/css/style.css"/>
+    </head>
+    <body>
+        <h1>Hello ASP.NET Mvc!</h1>
+
+        @{
+            string CurrentTime = DateTime.Now.ToString("MMM dd, yyyy h:mm tt");
+            <h3>@CurrentTime</h3>
+        }
+
+        
+
+        <hr>
+
+        @{
+            var StringList = new List<string>{
+                                    "one",
+                                    "two",
+                                    "three",
+                                    "four"
+                                };
+
+            foreach(var word in StringList)
+            {
+                // We can render HTML from within C# code!
+                <p>@word</p>
+            }
+        }
+
+        <hr>
+
+        @foreach(var word in StringList)
+        {
+        <div>
+            <p>@word</p>
+            @if(word.Length < 4)
+            {
+                <p>@word is a short word</p>
+            }
+        </div>
+        }
+    </body>
+</html>
