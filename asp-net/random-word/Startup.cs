@@ -8,8 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-
-namespace dojo_survey
+namespace random_word
 {
     public class Startup
     {
