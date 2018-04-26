@@ -13,6 +13,8 @@ namespace Dojodachi.Controllers
         [Route("")]
         public IActionResult Index()
         {
+            string img = (TempData["img"] == null) ? "/imgs/win.png" : TempData["img"].ToString();
+            ViewBag.img = img;
             ViewBag.message = TempData["msg"];
             ViewBag.happiness = dojodachi.happiness;
             ViewBag.fullness = dojodachi.fullness;
@@ -27,39 +29,47 @@ namespace Dojodachi.Controllers
         {
             if (act == "feed")
             {
+                TempData["img"] = "/imgs/feed.png";
                 TempData["msg"] = dojodachi.Feed();
             }
             else if (act == "play")
             {
+                TempData["img"] = "/imgs/play.png";
                 TempData["msg"] = dojodachi.Play();
             }
             else if (act == "work")
             {
+                TempData["img"] = "/imgs/work.png";
                 TempData["msg"] = dojodachi.Work();
             }
             else if (act == "sleep")
             {
+                TempData["img"] = "/imgs/sleep.png";
                 TempData["msg"] = dojodachi.Sleep();
             }
 
             if (dojodachi.energy <= 0)
             {
+                TempData["img"] = "/imgs/lose.png";
                 TempData["msg"] = "Your dojodachi died from lack of energy!";
                 return RedirectToAction("EndGame");
             }
             else if (dojodachi.happiness <= 0)
             {
+                TempData["img"] = "/imgs/lose.png";
                 TempData["msg"] = "Your dojodachi died from unhappiness!";
                 return RedirectToAction("EndGame");
             }
              else if (dojodachi.fullness <= 0)
             {
+                TempData["img"] = "/imgs/lose.png";
                 TempData["msg"] = "Your dojodachi died from starvation!";
                 return RedirectToAction("EndGame");
             }
             else if (dojodachi.happiness > 99 && dojodachi.energy > 99 && dojodachi.fullness > 99)
             {
-                TempData["msg"] = "Your dojodachi loves you, you win forever!";
+                TempData["img"] = "/imgs/win.png";
+                TempData["msg"] = "Your dojodachi loves you. You win forever!";
                 return RedirectToAction("EndGame");
             }
             return RedirectToAction("Index");
@@ -69,6 +79,8 @@ namespace Dojodachi.Controllers
         [Route("endgame")]
         public IActionResult EndGame()
         {
+            string img = (TempData["img"] == null) ? "/imgs/win.png" : TempData["img"].ToString();
+            ViewBag.img = img;
             ViewBag.message = TempData["msg"];
             ViewBag.happiness = dojodachi.happiness;
             ViewBag.fullness = dojodachi.fullness;
