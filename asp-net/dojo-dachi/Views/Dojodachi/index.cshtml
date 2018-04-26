@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DojoDachi</title>
+</head>
+<body>
+    
+    <h1>DojoDachi</h1>
+
+    <p>Happiness: <progress value="@ViewBag.happiness" max="100"></progress></p>
+    <p>Fullness: <progress value="@ViewBag.fullness" max="100"></progress></p>
+    <p>Energy: <progress value="@ViewBag.energy" max="100"></progress></p>
+    <p>Meals:
+        @{
+            if(ViewBag.meals < 4){
+                for(int i=0; i<ViewBag.meals; i++)
+                {
+                    <span>🍔</span>
+                }
+            }
+            else
+            {
+                <span>🍔 X @ViewBag.meals</span>
+            }
+        }
+    </p>
+
+    <div style="width: 300px; height: 300px; display:inline-block; background-color:#999;"></div>
+
+    <p>
+        <a href="/dojodachi/feed"><button>feed</button></a>
+        <a href="/dojodachi/play"><button>play</button></a>
+        <a href="/dojodachi/work"><button>work</button></a>
+        <a href="/dojodachi/sleep"><button>sleep</button></a>
+    </p>
+
+    <p>@ViewBag.message</p>
+
+
+</body>
+</html>
