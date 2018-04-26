@@ -13,7 +13,7 @@ namespace Dojodachi.Controllers
         [Route("")]
         public IActionResult Index()
         {
-            string img = (TempData["img"] == null) ? "/imgs/win.png" : TempData["img"].ToString();
+            string img = (TempData["img"] == null) ? "/imgs/normal.png" : TempData["img"].ToString();
             ViewBag.img = img;
             ViewBag.message = TempData["msg"];
             ViewBag.happiness = dojodachi.happiness;
@@ -29,13 +29,27 @@ namespace Dojodachi.Controllers
         {
             if (act == "feed")
             {
-                TempData["img"] = "/imgs/feed.png";
                 TempData["msg"] = dojodachi.Feed();
+                if (TempData["msg"].ToString().EndsWith(":("))
+                {
+                    TempData["img"] = "/imgs/badfood.png";
+                }
+                else
+                {
+                    TempData["img"] = "/imgs/goodfood.png";
+                }
             }
             else if (act == "play")
             {
-                TempData["img"] = "/imgs/play.png";
                 TempData["msg"] = dojodachi.Play();
+                if (TempData["msg"].ToString().EndsWith(":("))
+                {
+                    TempData["img"] = "/imgs/badplay.png";
+                }
+                else
+                {
+                    TempData["img"] = "/imgs/goodplay.png";
+                }
             }
             else if (act == "work")
             {
@@ -60,7 +74,7 @@ namespace Dojodachi.Controllers
                 TempData["msg"] = "Your dojodachi died from unhappiness!";
                 return RedirectToAction("EndGame");
             }
-             else if (dojodachi.fullness <= 0)
+            else if (dojodachi.fullness <= 0)
             {
                 TempData["img"] = "/imgs/lose.png";
                 TempData["msg"] = "Your dojodachi died from starvation!";
